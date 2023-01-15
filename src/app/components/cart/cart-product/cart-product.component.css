@@ -1,0 +1,60 @@
+.cart-item {
+  height: 80px;
+  box-shadow: var(--boxShadow);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cart-item img {
+  width: 100px;
+  height: 100%;
+}
+.item-data {
+  padding: 5px 0px 0px 8px;
+}
+.item-data > * {
+  padding: 0px;
+  margin: 0px;
+}
+.item-data .brand {
+  color: var(--textColor);
+  font-size: 13px;
+}
+.item-data .price span {
+  margin-right: 5px;
+}
+.item-data .price span.actual {
+  color: var(--textColor);
+  text-decoration: line-through;
+  font-size: 15px;
+}
+.actions {
+  margin-bottom: 5px;
+  align-self: flex-end;
+  justify-content: space-between;
+}
+
+.actions .quantity-actions button {
+  height: 20px !important;
+  width: 20px !important;
+  border-radius: 50%;
+  padding: 0px !important;
+  line-height: 20px;
+  margin: 0px 5px;
+  color: var(--textColor);
+  background-color: rgb(230, 229, 229);
+  font-size: 12px;
+}
+.actions .quantity-actions span {
+  display: inline-block;
+  margin: 0px 5px;
+}
+.actions button.del-btn {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  color: var(--warnColor);
+}

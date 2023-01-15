@@ -1,0 +1,149 @@
+<div class="container">
+  <div class="row flex-column justify-content-center align-items-center">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+      <div class="form-container">
+        <h1 class="text-center"><strong>sign up</strong></h1>
+        <form (ngSubmit)="onSignup(form)" #form="ngForm">
+          <div class="row" ngModelGroup="name">
+            <div class="col-6">
+              <mat-form-field appearance="outline">
+                <mat-label>first name</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="ex : ali"
+                  required
+                  minlength="3"
+                  name="first"
+                  ngModel
+                  #fname="ngModel"
+                />
+                <mat-icon matSuffix><i class="fa-solid fa-user"></i></mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline">
+                <mat-label>last name</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="ex : hassan"
+                  required
+                  minlength="3"
+                  name="lname"
+                  ngModel
+                  #lname="ngModel"
+                />
+                <mat-icon matSuffix><i class="fa-solid fa-user"></i></mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>email</mat-label>
+            <input
+              type="email"
+              matInput
+              placeholder="ex : ali@abc"
+              required
+              email
+              name="email"
+              ngModel
+              #email="ngModel"
+            />
+            <mat-icon matSuffix><i class="fa-solid fa-envelope"></i></mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>phone num</mat-label>
+            <input
+              type="tel"
+              matInput
+              placeholder="ex : 01154175890"
+              required
+              name="phone"
+              ngModel
+              #phone="ngModel"
+            />
+            <mat-icon matSuffix><i class="fa-solid fa-phone"></i></mat-icon>
+          </mat-form-field>
+          <div class="row" ngModelGroup="address">
+            <div class="col-4">
+              <mat-form-field appearance="outline">
+                <mat-label>country</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="ex : egypt"
+                  required
+                  name="country"
+                  ngModel
+                  #country="ngModel"
+                />
+                <mat-icon matSuffix
+                  ><i class="fa-solid fa-earth-americas"></i
+                ></mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-4">
+              <mat-form-field appearance="outline">
+                <mat-label>state</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="ex : cairo"
+                  required
+                  name="state"
+                  ngModel
+                  #state="ngModel"
+                />
+                <mat-icon matSuffix><i class="fa-solid fa-city"></i></mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-4">
+              <mat-form-field appearance="outline">
+                <mat-label>city</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="ex : masddia"
+                  required
+                  name="city"
+                  ngModel
+                  #city="ngModel"
+                />
+                <mat-icon matSuffix
+                  ><i class="fa-solid fa-house-user"></i
+                ></mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>password</mat-label>
+            <input
+              type="password"
+              matInput
+              placeholder="ex : jdkson12"
+              required
+              name="password"
+              ngModel
+              #password="ngModel"
+            />
+            <mat-icon matSuffix><i class="fa-solid fa-lock"></i></mat-icon>
+          </mat-form-field>
+          <div class="form-group">
+            <button
+              class="btn"
+              type="submit"
+              mat-button
+              [disabled]="!form.valid"
+            >
+              <i class="fa-solid fa-right-to-bracket"></i> signup
+            </button>
+          </div>
+        </form>
+        <div class="switch-auth text-center">
+          <p>alredy have account ? <a routerLink="../signin">signin now</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

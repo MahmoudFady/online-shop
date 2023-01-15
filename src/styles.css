@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+:root {
+  --mainColor: #2d7ad5;
+  --textColor: rgb(0 0 0 / 55%);
+  --boxShadow: 1px 1px 2px #ccc, -1px -1px 2px #ccc;
+  --warnColor: #dc3545;
+}
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Josefin Sans";
+  text-transform: capitalize !important;
+}
+a,
+a:hover {
+  cursor: pointer;
+  text-decoration: none !important;
+  color: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.wran-bg {
+  background-color: var(--warnColor) !important;
+  color: #fff !important;
+}
+.success-bg {
+  background-color: #080 !important;
+  color: #fff !important;
+}

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 images">
+      <img [src]="product.thumbnail" alt="" />
+      <ul>
+        <li *ngFor="let img of product.images">
+          <img [src]="img" alt="" />
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 info">
+      <div class="title">
+        <h4>
+          <strong>{{ product.title }}</strong>
+        </h4>
+      </div>
+      <div class="description">
+        <p>{{ product.description }}</p>
+      </div>
+      <div class="">
+        <p>category : {{ product.category }}</p>
+        <p>brand : {{ product.brand }}</p>
+        <p>rating : {{ product.rating }} <i class="fa-solid fa-star"></i></p>
+        <p>discount : {{ product.discountPercentage }}</p>
+        <p class="price">
+          price : <span class="actual">{{ product.price }}</span>
+          <span
+            >{{ getPriceAfterDiscount() }}
+            <i class="fa-solid fa-dollar-sign"></i
+          ></span>
+        </p>
+      </div>
+      <div class="buy">
+        <button mat-button>
+          <i class="fa-solid fa-cart-plus"></i> add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h2><strong>similar products</strong></h2>
+    <app-products [query]="similarQuery"></app-products>
+  </div>
+</div>

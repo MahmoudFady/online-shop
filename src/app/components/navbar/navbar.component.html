@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/shop"
+      ><img src="../../../assets/imgs/logo/shopping-cart.png" alt=""
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            routerLink="/shop"
+            routerLinkActive="active"
+          >
+            <i class="fa-solid fa-home"></i>
+            Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/shop/smartphones"
+            routerLinkActive="active"
+            ><i class="fa-solid fa-mobile"></i> smartphones</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/shop/laptops"
+            routerLinkActive="active"
+            ><i class="fa-solid fa-laptop"></i> laptops</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/shop/furniture"
+            routerLinkActive="active"
+            ><i class="fa-solid fa-chair"></i> furniture</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">others ?</a>
+        </li>
+        <li class="nav-item auth-ctrls">
+          <a
+            routerLink="/user/cart"
+            routerLinkActive="active"
+            class="nav-link"
+            matBadge="15"
+            matBadgeColor="warn"
+            ><i class="fa-solid fa-cart-shopping"></i
+          ></a>
+        </li>
+        <li class="nav-item auth-ctrls">
+          <a
+            routerLink="/auth/signin"
+            routerLinkActive="active"
+            class="nav-link"
+            ><i class="fa-solid fa-right-to-bracket"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

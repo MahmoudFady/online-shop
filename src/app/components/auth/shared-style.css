@@ -1,0 +1,39 @@
+.form-container {
+  box-shadow: var(--boxShadow);
+  padding: 25px;
+  border-radius: 5px;
+}
+mat-form-field {
+  width: 100%;
+  margin-bottom: 5px !important;
+}
+mat-label {
+  font-weight: bold;
+}
+mat-form-field i {
+  font-size: 14px;
+}
+mat-error {
+  font-size: 12px;
+  font-weight: bold;
+}
+.forget-password {
+  font-size: 13px;
+  font-weight: bold;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+button[type="submit"] {
+  background-color: var(--mainColor) !important;
+  color: #fff !important;
+  width: 100%;
+  font-size: 14px !important;
+  height: 40px;
+}
+.switch-auth {
+  color: var(--textColor);
+}
+.switch-auth a {
+  color: var(--warnColor);
+}

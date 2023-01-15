@@ -1,0 +1,29 @@
+<div class="cart-item d-flex">
+  <img [src]="item.product.thumbnail" alt="" />
+  <div class="item-data">
+    <h5 class="title">
+      <strong>{{ item.product.title }}</strong>
+    </h5>
+    <span class="brand">{{ item.product.brand }}</span>
+    <p class="price">
+      <span class="actual">{{ item.totalPriceAfterDiscount }}</span>
+      <span class="discount"
+        >{{ item.totalPrice }} <i class="fa-solid fa-dollar-sign"></i
+      ></span>
+    </p>
+  </div>
+  <div class="actions">
+    <div class="quantity-actions">
+      <button mat-icon-button (click)="onIncrQuantity()">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      <span>{{ item.quantity }}</span>
+      <button mat-icon-button (click)="onDecrQuantity()">
+        <i class="fa-solid fa-minus"></i>
+      </button>
+    </div>
+    <button class="del-btn" mat-icon-button (click)="onRemoveProduct()">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </div>
+</div>

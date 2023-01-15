@@ -1,0 +1,34 @@
+<div class="product-single">
+  <div class="image">
+    <img [src]="product.thumbnail" alt="" />
+  </div>
+  <div class="info">
+    <a [routerLink]="['/shop' , product._id]">
+      <h4 class="title">
+        <strong>{{ product.title }}</strong>
+      </h4>
+      <p class="description">{{ product.description | textShorten : 90 }}</p>
+      <p class="price">
+        <span *ngIf="product.discountPercentage > 0" class="actual">{{
+          product.price
+        }}</span>
+        <span class="discount"
+          >{{ calcPriceAfterDiscount() }} <i class="fa-solid fa-dollar-sign"></i
+        ></span></p
+    ></a>
+  </div>
+  <div class="actions">
+    <button class="btn buy-btn" mat-button (click)="onBuy()">
+      <i class="fa-solid fa-cart-plus"></i>
+    </button>
+  </div>
+  <div *ngIf="false" class="quantity-actions">
+    <button mat-icon-button (click)="onDecrQuantity()">
+      <i class="fa-solid fa-minus"></i>
+    </button>
+    <p><strong>3 items in cart</strong></p>
+    <button mat-icon-button (click)="onIncrQuantity()">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+</div>
