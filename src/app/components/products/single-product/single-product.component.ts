@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SingleProductComponent implements OnInit {
   @Input() product!: IProduct;
+  @Input() quantity = 0;
   constructor(
     private _snackBar: MatSnackBar,
     private authService: AuthService,
@@ -29,16 +30,21 @@ export class SingleProductComponent implements OnInit {
     this._snackBar.open('product add to cart', '', {
       panelClass: ['success-bg'],
     });
+    this.quantity += 1;
   }
   onIncrQuantity() {
+    this.cartService.incrPorductQuan(this.product._id);
     this._snackBar.open('one item added', '', {
       panelClass: ['success-bg'],
     });
+    this.quantity += 1;
   }
   onDecrQuantity() {
+    this.cartService.decrPorductQuan(this.product._id);
     this._snackBar.open('one item removed', '', {
       panelClass: ['wran-bg'],
     });
+    this.quantity -= 1;
   }
   calcPriceAfterDiscount() {
     const { price, discountPercentage } = this.product;

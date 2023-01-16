@@ -53,17 +53,22 @@
         <li class="nav-item">
           <a class="nav-link">others ?</a>
         </li>
-        <li class="nav-item auth-ctrls">
+        <li *ngIf="isAuth" class="nav-item auth-ctrls">
           <a
             routerLink="/user/cart"
             routerLinkActive="active"
             class="nav-link"
-            matBadge="15"
+            [matBadge]="totalProducts"
             matBadgeColor="warn"
             ><i class="fa-solid fa-cart-shopping"></i
           ></a>
         </li>
-        <li class="nav-item auth-ctrls">
+        <li *ngIf="isAuth" class="nav-item auth-ctrls">
+          <a (click)="onLogout()" routerLinkActive="active" class="nav-link">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </a>
+        </li>
+        <li *ngIf="!isAuth" class="nav-item auth-ctrls">
           <a
             routerLink="/auth/signin"
             routerLinkActive="active"

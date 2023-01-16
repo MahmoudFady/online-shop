@@ -23,6 +23,9 @@ export class ProductService {
       next: (response) => {
         this.productsResponse$.next(response);
       },
+      error: (err) => {
+        this.productsResponse$.error(err);
+      },
     });
   }
   getProductById(id: string) {

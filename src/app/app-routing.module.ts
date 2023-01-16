@@ -1,3 +1,4 @@
+import { AuthGuardService } from './components/auth/auth-guard.service';
 import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'shop/:productId', component: ProductDetailsComponent },
   {
     path: 'user',
+    canActivate: [AuthGuardService],
     children: [
       {
         path: 'cart',

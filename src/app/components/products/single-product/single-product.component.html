@@ -3,7 +3,7 @@
     <img [src]="product.thumbnail" alt="" />
   </div>
   <div class="info">
-    <a [routerLink]="['/shop' , product._id]">
+    <a [routerLink]="['/shop', product._id]">
       <h4 class="title">
         <strong>{{ product.title }}</strong>
       </h4>
@@ -17,16 +17,18 @@
         ></span></p
     ></a>
   </div>
-  <div class="actions">
+  <div class="actions" *ngIf="quantity === 0">
     <button class="btn buy-btn" mat-button (click)="onBuy()">
       <i class="fa-solid fa-cart-plus"></i>
     </button>
   </div>
-  <div *ngIf="false" class="quantity-actions">
+  <div *ngIf="quantity > 0" class="quantity-actions">
     <button mat-icon-button (click)="onDecrQuantity()">
       <i class="fa-solid fa-minus"></i>
     </button>
-    <p><strong>3 items in cart</strong></p>
+    <p>
+      <strong>{{ quantity }} items in cart</strong>
+    </p>
     <button mat-icon-button (click)="onIncrQuantity()">
       <i class="fa-solid fa-plus"></i>
     </button>
