@@ -1,6 +1,6 @@
 <div class="cart-item d-flex">
   <img [src]="item.product.thumbnail" alt="" />
-  <div class="item-data">
+  <div class="item-data" [routerLink]="['/shop', item.product._id]">
     <h5 class="title">
       <strong>{{ item.product.title }}</strong>
     </h5>

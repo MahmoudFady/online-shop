@@ -43,6 +43,7 @@ export class ProductsComponent implements OnInit {
           this.cartProducts = cartProducts;
         },
       });
+    this.cartService.getUserCart();
     this.loading = true;
     this.productService.getProductsByQuery(this.query);
     this.productService.updatedPoductsListener().subscribe({
