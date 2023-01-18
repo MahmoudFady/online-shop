@@ -3,7 +3,7 @@
     <img [src]="product.thumbnail" alt="" />
   </div>
   <div class="info">
-    <a [routerLink]="['/shop', product._id]">
+    <a [routerLink]="['/shop', product._id]" [queryParams]="{quantity}">
       <h4 class="title">
         <strong>{{ product.title }}</strong>
       </h4>
@@ -16,21 +16,9 @@
           >{{ calcPriceAfterDiscount() }} <i class="fa-solid fa-dollar-sign"></i
         ></span></p
     ></a>
-  </div>
-  <div class="actions" *ngIf="quantity === 0">
-    <button class="btn buy-btn" mat-button (click)="onBuy()">
-      <i class="fa-solid fa-cart-plus"></i>
-    </button>
-  </div>
-  <div *ngIf="quantity > 0" class="quantity-actions">
-    <button mat-icon-button (click)="onDecrQuantity()">
-      <i class="fa-solid fa-minus"></i>
-    </button>
-    <p>
-      <strong>{{ quantity }} items in cart</strong>
-    </p>
-    <button mat-icon-button (click)="onIncrQuantity()">
-      <i class="fa-solid fa-plus"></i>
-    </button>
+    <app-product-quan-ctrls
+      [quantity]="quantity"
+      [productId]="product._id"
+    ></app-product-quan-ctrls>
   </div>
 </div>

@@ -33,3 +33,9 @@
     </div>
   </div>
 </div>
+<div *ngIf="!cart" class="container empty-cart">
+  <div class="row">
+    <h1><strong>your cart is empty</strong></h1>
+    <button mat-button>shopping now</button>
+  </div>
+</div>

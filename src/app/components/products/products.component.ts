@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { CartService } from './../cart/cart.service';
 import { PageEvent } from '@angular/material/paginator';
 import { IProduct } from './../shared/models/product.model';
@@ -21,6 +22,7 @@ export class ProductsComponent implements OnInit {
     this.productService.getProductsByQuery(this.query);
   }
   constructor(
+    private authService: AuthService,
     private productService: ProductService,
     private cartService: CartService
   ) {}
@@ -32,8 +34,8 @@ export class ProductsComponent implements OnInit {
         map((cart) => {
           if (!cart) return [];
           const products = cart.products;
-          const obj = products.map((p) => {
-            return { _id: p.product._id, quantity: p.quantity };
+          const obj = products.map((obj) => {
+            return { _id: obj.product._id, quantity: obj.quantity };
           });
           return obj;
         })
@@ -43,9 +45,6 @@ export class ProductsComponent implements OnInit {
           this.cartProducts = cartProducts;
         },
       });
-    this.cartService.getUserCart();
-    this.loading = true;
-    this.productService.getProductsByQuery(this.query);
     this.productService.updatedPoductsListener().subscribe({
       next: (response) => {
         this.products = response.products;
@@ -56,6 +55,9 @@ export class ProductsComponent implements OnInit {
         this.loading = false;
       },
     });
+    this.productService.getProductsByQuery(this.query);
+    const { token, userId } = this.authService.getSavedTokenAndUserId();
+    if (token && userId) this.cartService.getUserCart();
   }
   onPageChanges($page: PageEvent) {
     let { pageIndex, pageSize } = $page;

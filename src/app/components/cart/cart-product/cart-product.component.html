@@ -1,17 +1,22 @@
 <div class="cart-item d-flex">
   <img [src]="item.product.thumbnail" alt="" />
-  <div class="item-data" [routerLink]="['/shop', item.product._id]">
+  <a
+    class="item-data"
+    [routerLink]="['/shop', item.product._id]"
+    [queryParams]="{ quantity: item.quantity }"
+  >
     <h5 class="title">
       <strong>{{ item.product.title }}</strong>
     </h5>
     <span class="brand">{{ item.product.brand }}</span>
     <p class="price">
-      <span class="actual">{{ item.totalPriceAfterDiscount }}</span>
+      <span class="actual">{{ item.totalPrice }}</span>
       <span class="discount"
-        >{{ item.totalPrice }} <i class="fa-solid fa-dollar-sign"></i
+        >{{ item.totalPriceAfterDiscount }}
+        <i class="fa-solid fa-dollar-sign"></i
       ></span>
     </p>
-  </div>
+  </a>
   <div class="actions">
     <div class="quantity-actions">
       <button mat-icon-button (click)="onIncrQuantity()">

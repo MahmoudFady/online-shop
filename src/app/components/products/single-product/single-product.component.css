@@ -29,32 +29,4 @@
   text-decoration: line-through;
   color: var(--textColor);
 }
-.product-single .actions {
-  padding: 0px 10px 10px 10px;
-}
-.product-single button.buy-btn {
-  background-color: var(--mainColor);
-  width: 100%;
-  color: #fff;
-}
-.quantity-actions {
-  padding: 0px 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 40px;
-  line-height: 40px;
-  margin-bottom: 10px;
-}
-.quantity-actions p {
-  font-size: 13px;
-  color: var(--textColor);
-}
-.quantity-actions button {
-  width: 30px !important;
-  height: 30px !important;
-  line-height: 30px;
-  border-radius: 50%;
-  text-align: center;
-  background-color: #ccc;
-}
+

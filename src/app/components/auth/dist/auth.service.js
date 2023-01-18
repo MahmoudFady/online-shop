@@ -16,6 +16,23 @@ var AuthService = /** @class */ (function () {
         this.isAuth$ = new rxjs_1.Subject();
         this.url = 'http://localhost:3000/api/user/';
     }
+    AuthService.prototype.autoLogout = function () {
+        var _this = this;
+        var expireDuration = 1 * 24 * 60 * 60 * 1000;
+        var savedAuthDate = localStorage.getItem('authDate');
+        var authDate = new Date(savedAuthDate).getTime();
+        var authExpiredIn = authDate + expireDuration;
+        var logoutIn = authExpiredIn - Date.now();
+        var timer;
+        if (logoutIn > 0) {
+            timer = setTimeout(function () {
+                _this.logout();
+            }, logoutIn);
+            return;
+        }
+        clearTimeout(timer);
+        this.logout();
+    };
     AuthService.prototype.signin = function (user) {
         return this.http.post(this.url + "signin", user);
     };
@@ -23,14 +40,18 @@ var AuthService = /** @class */ (function () {
         return this.http.post(this.url + "signup", user);
     };
     AuthService.prototype.setupSuccessAuth = function (token, userId) {
+        var authDate = new Date();
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
+        localStorage.setItem('authDate', authDate);
         this.router.navigate(['/user/cart']);
         this.isAuth$.next(true);
     };
-    AuthService.prototype.clearSuccessAuth = function () {
+    AuthService.prototype.logout = function () {
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
+        localStorage.removeItem('authDate');
+        this.router.navigate(['/auth/signin']);
         this.isAuth$.next(false);
     };
     AuthService.prototype.isAuthSaved = function () {
@@ -43,7 +64,7 @@ var AuthService = /** @class */ (function () {
             userId: localStorage.getItem('userId') || ''
         };
     };
-    AuthService.prototype.isAuth = function () {
+    AuthService.prototype.isAuthListener = function () {
         return this.isAuth$.asObservable();
     };
     AuthService = __decorate([

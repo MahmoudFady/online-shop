@@ -14,7 +14,7 @@
 }
 .item-data {
   padding: 5px 0px 0px 8px;
-  width: 150px;
+  width: 180px;
 }
 .item-data > * {
   padding: 0px;
@@ -35,7 +35,6 @@
 .actions {
   margin-bottom: 5px;
   align-self: flex-end;
-  background-color: #ccc;
   text-align: center;
   padding-right: 5px;
 }

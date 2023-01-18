@@ -23,14 +23,14 @@ export class CartProductComponent implements OnInit {
   onDecrQuantity() {
     this.cartService.decrPorductQuan(this.item.product._id);
     this._snackBar.open('one item removed from cart', '', {
-      panelClass: 'wran-bg',
+      panelClass: 'warn-bg',
     });
   }
   onRemoveProduct() {
     this.cartService.removeProduct(this.item.product._id);
     this.cartService.incrPorductQuan(this.item.product._id);
     this._snackBar.open('one item added to cart', '', {
-      panelClass: 'wran-bg',
+      panelClass: 'warn-bg',
     });
   }
 }

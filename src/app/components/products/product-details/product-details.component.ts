@@ -9,7 +9,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  product!: IProduct;
+  product: IProduct = {
+    _id: '',
+    title: '',
+    description: '',
+    price: 0,
+    discountPercentage: 0,
+    rating: 0,
+    brand: '',
+    category: '',
+    thumbnail: '',
+  };
+  quantity!: number;
   similarQuery!: string;
   loading = false;
   constructor(
@@ -18,6 +29,11 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.loading = true;
+    this.route.queryParams.subscribe({
+      next: (queryParams) => {
+        this.quantity = +queryParams['quantity'];
+      },
+    });
     this.route.params.subscribe({
       next: (params) => {
         const productId = params['productId'];
@@ -26,7 +42,6 @@ export class ProductDetailsComponent implements OnInit {
             this.loading = false;
             this.product = response.product;
             this.similarQuery = `category=${this.product.category}`;
-            console.log(this.similarQuery);
           },
         });
       },

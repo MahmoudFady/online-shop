@@ -1,7 +1,7 @@
 import { CartService } from './../cart/cart.service';
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { catchError, map } from 'rxjs';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +17,12 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const { userId, token } = this.authService.getSavedTokenAndUserId();
+    this.isAuth = userId && token ? true : false;
+    if (this.isAuth) {
+      this.cartService.getUserCart();
+      this.authService.autoLogout();
+    }
     this.cartService
       .getUpdatedCartListener()
       .pipe(
@@ -30,11 +36,6 @@ export class NavbarComponent implements OnInit {
           console.log(this.totalProducts);
         },
       });
-    const { userId, token } = this.authService.getSavedTokenAndUserId();
-    this.isAuth = userId && token ? true : false;
-    if (this.isAuth) {
-      this.cartService.getUserCart();
-    }
     this.authService.isAuthListener().subscribe({
       next: (isAuth) => {
         this.isAuth = isAuth;

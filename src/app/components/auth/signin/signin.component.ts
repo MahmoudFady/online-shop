@@ -1,3 +1,4 @@
+import { LoaderService } from './../../shared/loader.service';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -12,26 +13,30 @@ export class SigninComponent implements OnInit {
   loading = false;
   constructor(
     private _snackBar: MatSnackBar,
-    private authService: AuthService
+    private authService: AuthService,
+    private loaderService: LoaderService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loaderService.updatedLoaderListener().subscribe({
+      next: (loading) => {
+        this.loading = loading;
+      },
+    });
+  }
   onSignin(form: NgForm) {
     if (form.invalid) return;
-    this.loading = true;
     const { email, password } = form.value;
     this.authService.signin({ email, password }).subscribe({
       next: (response) => {
-        this.loading = false;
         const { token, user } = response;
         if (!token || !user) return;
         this.authService.setupSuccessAuth(token, user._id!);
       },
       error: (err) => {
-        this.loading = false;
         const errMsg = err.error.message;
         this._snackBar.open(errMsg, '', {
-          panelClass: ['wran-bg'],
+          panelClass: ['warn-bg'],
         });
         if (err.status == 404) {
           form.controls['email'].reset();

@@ -12,6 +12,7 @@ export class CartService {
     next: (response: { cart: ICart }) => {
       this.cart$.next(response.cart);
     },
+    error: (err: any) => {},
   };
   getUserCart() {
     this.http.get<{ cart: ICart }>(this.baseUrl).subscribe(this.cartObserver);

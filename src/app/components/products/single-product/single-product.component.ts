@@ -20,32 +20,7 @@ export class SingleProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-  onBuy() {
-    const { token, userId } = this.authService.getSavedTokenAndUserId();
-    if (!token || !userId) {
-      this.router.navigate(['/auth', 'signin']);
-      return;
-    }
-    this.cartService.addProduct(this.product._id);
-    this._snackBar.open('product add to cart', '', {
-      panelClass: ['success-bg'],
-    });
-    this.quantity += 1;
-  }
-  onIncrQuantity() {
-    this.cartService.incrPorductQuan(this.product._id);
-    this._snackBar.open('one item added', '', {
-      panelClass: ['success-bg'],
-    });
-    this.quantity += 1;
-  }
-  onDecrQuantity() {
-    this.cartService.decrPorductQuan(this.product._id);
-    this._snackBar.open('one item removed', '', {
-      panelClass: ['wran-bg'],
-    });
-    this.quantity -= 1;
-  }
+
   calcPriceAfterDiscount() {
     const { price, discountPercentage } = this.product;
     const result = price - price * (discountPercentage / 100);

@@ -1,38 +1,26 @@
 import { AuthGuardService } from './components/auth/auth-guard.service';
-import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
-import { SignupComponent } from './components/auth/signup/signup.component';
-import { SigninComponent } from './components/auth/signin/signin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductDetailsComponent } from './components/products/product-details/product-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
-  { path: 'shop', component: HomeComponent },
-  { path: 'shop/:productId', component: ProductDetailsComponent },
+  {
+    path: 'shop',
+    loadChildren: () =>
+      import('./components/shop/shop.module').then((m) => m.ShopModule),
+  },
+
   {
     path: 'user',
     canActivate: [AuthGuardService],
-    children: [
-      {
-        path: 'cart',
-        component: CartComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./components/cart/cart.module').then((m) => m.CartModule),
   },
   {
     path: 'auth',
-    children: [
-      {
-        path: 'signin',
-        component: SigninComponent,
-      },
-      {
-        path: 'signup',
-        component: SignupComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./components/auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 

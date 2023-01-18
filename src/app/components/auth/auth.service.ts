@@ -49,7 +49,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('authDate');
-    this.router.navigate(['/shop']);
+    this.router.navigate(['/auth/signin']);
     this.isAuth$.next(false);
   }
   isAuthSaved() {
