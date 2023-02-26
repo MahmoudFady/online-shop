@@ -2,6 +2,7 @@ import { Subject } from 'rxjs';
 import { IProduct } from './../shared/models/product.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 interface IProductResponse {
   pageIndex: number;
   limit: number;
@@ -14,7 +15,7 @@ interface IProductResponse {
 }
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  private readonly url = 'http://localhost:3000/api/products/';
+  private readonly url = environment.BACKEND_BASE_URL.concat('products/');
   private productsResponse$ = new Subject<IProductResponse>();
   constructor(private http: HttpClient) {}
   getProductsByQuery(query: string, limit = 8, pageIndex = 1) {

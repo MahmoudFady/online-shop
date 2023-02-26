@@ -20,12 +20,11 @@ export class AuthGuardService implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     const { token, userId } = this.authService.getSavedTokenAndUserId();
-    const promise = new Promise<boolean>((resolve, reject) => {
+    return new Promise<boolean>((resolve, reject) => {
       if (!token || !userId) {
         this.router.navigate(['/auth', 'signin']);
       }
       resolve(true);
     });
-    return promise;
   }
 }

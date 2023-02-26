@@ -1,4 +1,3 @@
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
 import { ICart } from './../shared/models/cart.model';
 import { HttpClient } from '@angular/common/http';

@@ -1,35 +1,12 @@
 <div *ngIf="cart" class="container">
   <div class="row flex-column justify-content-center align-items-center">
-    <div *ngFor="let item of cart.products" class="col-xs-12 col-lg-6">
-      <app-cart-product [item]="item"></app-cart-product>
+    <div *ngFor="let product of cart.products" class="col-xs-12 col-lg-6">
+      <app-cart-product [item]="product"></app-cart-product>
     </div>
   </div>
   <div class="row justify-content-center align-items-center check-out">
     <div class="col-xs-12 col-md-4">
-      <div class="cart-info">
-        <div>
-          <h3><strong> products</strong></h3>
-          <span>{{ cart.totalProducts }}</span>
-        </div>
-        <div>
-          <h3><strong> quantity</strong></h3>
-          <span>{{ cart.totalQuantity }}</span>
-        </div>
-        <div>
-          <h3><strong> price</strong></h3>
-          <span
-            >{{ cart.totalPrice }} <i class="fa-solid fa-dollar-sign"></i>
-          </span>
-        </div>
-        <div>
-          <h3><strong> after discount</strong></h3>
-          <span
-            >{{ cart.totalPriceAfterDiscount }}
-            <i class="fa-solid fa-dollar-sign"></i
-          ></span>
-        </div>
-        <button mat-button>checkout now</button>
-      </div>
+      <app-cart-check-out-card [cartInfo]="cartInfo"></app-cart-check-out-card>
     </div>
   </div>
 </div>

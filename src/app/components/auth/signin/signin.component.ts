@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SigninComponent implements OnInit {
   loading = false;
   constructor(
-    private _snackBar: MatSnackBar,
+    private matSnackBar: MatSnackBar,
     private authService: AuthService,
     private loaderService: LoaderService
   ) {}
@@ -26,16 +26,15 @@ export class SigninComponent implements OnInit {
   }
   onSignin(form: NgForm) {
     if (form.invalid) return;
-    const { email, password } = form.value;
-    this.authService.signin({ email, password }).subscribe({
+    const user = form.value as { email: string; password: string };
+    this.authService.signin(user).subscribe({
       next: (response) => {
         const { token, user } = response;
-        if (!token || !user) return;
         this.authService.setupSuccessAuth(token, user._id!);
       },
       error: (err) => {
         const errMsg = err.error.message;
-        this._snackBar.open(errMsg, '', {
+        this.matSnackBar.open(errMsg, '', {
           panelClass: ['warn-bg'],
         });
         if (err.status == 404) {

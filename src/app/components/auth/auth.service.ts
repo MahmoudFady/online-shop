@@ -1,9 +1,10 @@
+import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IUser } from './../shared/models/user.model';
 import { Subject, retry } from 'rxjs';
 import { Router } from '@angular/router';
-interface AuthResponse {
+interface IAuthResponse {
   message: string;
   user: IUser;
   token: string;
@@ -13,7 +14,7 @@ interface AuthResponse {
 })
 export class AuthService {
   private isAuth$ = new Subject<boolean>();
-  private readonly url = 'http://localhost:3000/api/user/';
+  private readonly url = environment.BACKEND_BASE_URL.concat('user/');
   constructor(private http: HttpClient, private router: Router) {}
   autoLogout() {
     const expireDuration = 1 * 24 * 60 * 60 * 1000;
@@ -32,10 +33,10 @@ export class AuthService {
     this.logout();
   }
   signin(user: { email: string; password: string }) {
-    return this.http.post<AuthResponse>(`${this.url}signin`, user);
+    return this.http.post<IAuthResponse>(`${this.url}signin`, user);
   }
   signup(user: IUser) {
-    return this.http.post<AuthResponse>(`${this.url}signup`, user);
+    return this.http.post<IAuthResponse>(`${this.url}signup`, user);
   }
   setupSuccessAuth(token: string, userId: string) {
     const authDate = new Date() as unknown as string;

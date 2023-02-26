@@ -8,12 +8,29 @@ import { Component } from '@angular/core';
 })
 export class CartComponent {
   cart!: ICart;
+  cartInfo!: {
+    totalProducts: number;
+    totalQuantity: number;
+    totalPrice: number;
+    totalPriceAfterDiscount: number;
+  };
   constructor(private cartService: CartService) {}
   ngOnInit() {
     this.cartService.getUpdatedCartListener().subscribe({
       next: (cart) => {
         this.cart = cart;
-        console.log(cart);
+        const {
+          totalPrice,
+          totalPriceAfterDiscount,
+          totalQuantity,
+          totalProducts,
+        } = cart;
+        this.cartInfo = {
+          totalPrice,
+          totalPriceAfterDiscount,
+          totalProducts,
+          totalQuantity,
+        };
       },
     });
     this.cartService.getUserCart();
